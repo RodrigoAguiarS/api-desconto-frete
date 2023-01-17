@@ -1,5 +1,7 @@
 package br.com.rodrigo.frete.api.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class FreteController {
     private ConversorBase<Frete, FreteDto> conversor;
 
     @PostMapping
-    public ResponseEntity<FreteDto> calcularFrete(@RequestBody FreteDto freteDto) {
+    public ResponseEntity<FreteDto> calcularFrete(@RequestBody @Valid FreteDto freteDto) {
         Frete frete = conversor.converterDtoParaEntidade(freteDto);
         frete = freteService.calcularFrete(freteDto);
         freteDto = conversor.converterEntidadeParaDto(frete);
