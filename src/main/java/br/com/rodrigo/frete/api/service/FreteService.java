@@ -34,9 +34,9 @@ public class FreteService {
     public Frete calcularFrete(FreteDto freteDto) {
 
         Frete frete = conversor.converterDtoParaEntidade(freteDto);
-        frete = estadosDDDIguais.calcular(frete, frete.getCepOrigem(), frete.getCepDestino());
-        frete = estadosIguaisDDDNao.calcular(frete, frete.getCepOrigem(), frete.getCepDestino());
-        frete = estadosDiferentes.calcular(frete, frete.getCepOrigem(), frete.getCepDestino());
+        frete = estadosDDDIguais.calcular(frete);
+        frete = estadosIguaisDDDNao.calcular(frete);
+        frete = estadosDiferentes.calcular(frete);
         frete.setDataConsulta(LocalDate.now());
         freteRepository.save(frete);
         return frete;
