@@ -32,6 +32,6 @@ public class RestTemplateConfig {
 
     @Bean
     public ConversorBase conversorBase() {
-      return new FreteConverter();
+      return new FreteConversor();
     }
 }
